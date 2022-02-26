@@ -15,6 +15,10 @@ import sqlite3
 
 app = Flask(__name__)
 app.config.from_object('src.config.DevelopmentConfig')
+
+
+
+db = SQLAlchemy(app)
 api = Api(app)
 
 # TODO: move the in-memory token store to the database
