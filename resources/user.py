@@ -8,6 +8,7 @@ import re
 import json
 from src.const import ENV
 
+
 # parser used by both User class and Users class
 parser = reqparse.RequestParser()
 
@@ -19,7 +20,7 @@ class User(Resource):
         # retrieves user from database and returns as dict
         # TODO: Require valid auth token to view user data
         try:
-            query = 'SELECT * FROM users WHERE username="?"'
+            query = 'SELECT * FROM users WHERE username=?'
             result = get_db().cursor().execute(query, user_name)
             row = result.fetchone()
             return dict(zip([c[0] for c in result.description], row))
